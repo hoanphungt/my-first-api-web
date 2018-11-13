@@ -3,7 +3,7 @@
     "express": "^4.16.4",
     "pg": "6",
     "scripts": {
-      "start": "node index.js",
+      "start": "node your-script.js",
       "test": "echo \"Error: no test specified\" && exit 1"
     },
     "sequelize": "^4.41.2"    
