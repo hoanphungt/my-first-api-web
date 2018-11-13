@@ -2,6 +2,9 @@
   "dependencies": {
     "express": "^4.16.4",
     "pg": "6",
-    "sequelize": "^4.41.2"
+    "sequelize": "^4.41.2",
+    "script": {
+      "start": "node index.js"
+    }
   }
 }
