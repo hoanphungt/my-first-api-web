@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
 const connectionString = process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/postgres'
 const sequelize = new Sequelize(connectionString, { define: { timestamps: false } });
-const port = process.env.DATABASE_URL || 4000
+const port = process.env.PORT || 4000
 
 app.use(bodyParser.json())
 
