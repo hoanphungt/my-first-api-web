@@ -1,14 +1,11 @@
 const express = require('express');
 const app = express();
-const port = 4000;
 const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
 const connectionString = process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/postgres'
 const sequelize = new Sequelize(connectionString, { define: { timestamps: false } });
 
 app.use(bodyParser.json())
-
-app.listen(port, () => `Listening on port ${port}`)
 
 //create the houses table in your database when your app starts
 const House = sequelize.define('house', {
@@ -59,13 +56,6 @@ app.get('/houses/:id', function (req, res, next) {
         })
 })
 
-// House.create({
-//     title: 'Multi Million Estate',
-//     description: 'This was build by a super-duper rich programmer',
-//     size: 1235,
-//     price: 98400000
-// }).then(house => console.log(`The house is now created. The ID = ${house.id}`))
-
 //Create a new house = POST
 app.post('/houses', function (req, res) {
     
@@ -85,18 +75,6 @@ app.post('/houses', function (req, res) {
                 })
         })
 })
-
-// app.put('/houses/:id', function (req, res) {
-//     const id = req.params.id
-//     House.findById(id) 
-        
-//         const { ... } = req.body
-
-//         house.update({...})
-//             .then(updatedHouse => res.status(200).json({house: updatedHouse})
-//     res.json({ message: `Update house ${id}` })
-//   })
-
 
 //Update information of a house = PUT or PATCH
 app.put('/houses/:id', function (req, res) {
@@ -148,4 +126,8 @@ app.delete('/houses/:id', function (req, res) {
                     error: err
                 })
         })
+})
+
+app.listen(process.env.PORT || 4000, function () {
+    console.log('Web server listening on port')
 })
