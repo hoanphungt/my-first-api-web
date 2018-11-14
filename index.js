@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
 const connectionString = process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/postgres'
 const sequelize = new Sequelize(connectionString, { define: { timestamps: false } });
+const port = process.env.DATABASE_URL || 4000
 
 app.use(bodyParser.json())
 
@@ -128,6 +129,6 @@ app.delete('/houses/:id', function (req, res) {
         })
 })
 
-app.listen(process.env.PORT || 4000, function () {
+app.listen(port, function () {
     console.log('Web server listening on port')
 })
